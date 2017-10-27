@@ -8,7 +8,7 @@ mkdir spigot
 cd spigot
 
 # update everything
-sudo apt-get -qy install "git" "openjdk-7-jre-headless" "tar"
+sudo apt-get -qy install "git" "openjdk-8-jre" "tar"
 
 # get build tools
 curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
