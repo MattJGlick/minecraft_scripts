@@ -91,6 +91,9 @@ backup() {
 }
 
 case "$1" in
+  setup)
+    setup
+    ;;
   start)
     start
     ;;
@@ -116,7 +119,7 @@ case "$1" in
     tmux attach -t $TMUX_NAME
     ;;
   *)
-  echo $"Usage: $0 {start|stop|attach|restart|send_msg|status}"
+  echo $"Usage: $0 {setup|start|stop|attach|restart|send_msg|status}"
   exit 1
 esac
 
