@@ -29,7 +29,7 @@ setup() {
   touch eula.txt
   echo "eula=true" > eula.txt
 
-  # TODO setup cron job for backups
+  crontab -l | { cat; echo "0 5 * * * $SPIGOT_DIR/mc_server backup"; } | crontab -
 }
 
 is_running() {
@@ -53,7 +53,7 @@ start() {
   fi
 
   echo "Starting up the server at tmux session: $TMUX_NAME"
-  tmux new -d -s $TMUX_NAME "java -Xms512M -Xmx1G -XX:MaxPermSize=128M -XX:+UseConcMarkSweepGC -jar spigot-*.jar"
+  tmux new -d -s $TMUX_NAME "java -Xms512M -Xmx1G -XX:MaxPermSize=128M -XX:+UseConcMarkSweepGC -jar $SPIGOT_DIR/spigot-*.jar"
 }
 
 stop() {
