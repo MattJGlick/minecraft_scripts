@@ -53,7 +53,7 @@ start() {
   fi
 
   echo "Starting up the server at tmux session: $TMUX_NAME"
-  tmux new -d -s $TMUX_NAME "java -Xms512M -Xmx1G -XX:MaxPermSize=128M -XX:+UseConcMarkSweepGC -jar $SPIGOT_DIR/spigot-*.jar"
+  tmux new -d -s $TMUX_NAME "cd $SPIGOT_DIR; java -Xms512M -Xmx1G -XX:MaxPermSize=128M -XX:+UseConcMarkSweepGC -jar $SPIGOT_DIR/spigot-*.jar"
 }
 
 stop() {
@@ -75,6 +75,7 @@ status() {
 
   echo "Server is up"
   tmux send-key -t $TMUX_NAME "list" C-m
+  sleep .1
   grep -A1 "There are .* players online" $SPIGOT_DIR/logs/latest.log | tail -n 2 | awk -F 'INFO]: ' '{print $2}'
 }
 
