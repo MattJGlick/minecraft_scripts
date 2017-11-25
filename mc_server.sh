@@ -8,7 +8,7 @@ TMUX_NAME=mc
 setup() {
   if [ -d "$SPIGOT_DIR" ]; then
     echo "This SPIGOT_DIR already exists, not gonna mess it up"
-    exit 3
+    exit 1
   fi
 
   echo "Creating $SPIGOT_DIR"
